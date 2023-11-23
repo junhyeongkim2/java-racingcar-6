@@ -15,5 +15,7 @@ public class Game {
         return cars.moveForwardAll();
     }
 
-
+    public Winners judgeWinners(List<Car> cars) {
+        return new Winners(cars);
+    }
 }
