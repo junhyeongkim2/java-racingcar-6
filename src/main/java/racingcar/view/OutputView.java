@@ -7,8 +7,11 @@ import racingcar.model.Winners;
 
 public class OutputView {
 
+    private static String START_RESULT_MESSAGE = "\n실행 결과";
+    private static String WINNERS_MESSAGE = "최종 우승자 : ";
+
     public static void printStartResultMessage() {
-        System.out.println("\n실행 결과");
+        System.out.println(START_RESULT_MESSAGE);
     }
 
     public static void printResult(List<Car> cars) {
@@ -24,7 +27,7 @@ public class OutputView {
     }
 
     public static void printWinners(Winners judgeWinners) {
-        System.out.print("최종 우승자 : ");
+        System.out.print(WINNERS_MESSAGE);
         System.out.print(judgeWinners.getWinners().stream().collect(Collectors.joining(", ")).toString());
     }
 }
