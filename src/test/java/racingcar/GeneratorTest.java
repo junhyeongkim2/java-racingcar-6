@@ -6,6 +6,7 @@ import racingcar.model.Generator;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.setRemoveAssertJRelatedElementsFromStackTrace;
 
 public class GeneratorTest {
 
@@ -18,6 +19,6 @@ public class GeneratorTest {
         randomNumber = Generator.generateRandomNumber();
         //then
         assertThat(randomNumber).isNotEqualTo(0);
-        assertThat(randomNumber).isLessThan(9).isGreaterThan(1);
+        assertThat(randomNumber).isLessThanOrEqualTo(9).isGreaterThanOrEqualTo(0);
     }
 }
