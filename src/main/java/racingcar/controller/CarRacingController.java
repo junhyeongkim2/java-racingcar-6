@@ -18,8 +18,8 @@ public class CarRacingController {
     }
 
     public void start() {
-        carRacingService.createCarRaicingGame(InputView.readParticipants(),
-                tryNumber = Integer.parseInt(InputView.readTryNumber()));
+        carRacingService.createCarRaicingGame(InputView.readParticipants());
+        tryNumber = Integer.parseInt(InputView.readTryNumber());
         OutputView.printStartResultMessage();
         printCarPositions();
         OutputView.printWinners(carRacingService.judgeWinners());

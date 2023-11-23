@@ -12,8 +12,8 @@ public class CarRacingService {
 
     private Game game;
 
-    public void createCarRaicingGame(String participants, int tryNumber) {
-        game = new Game(participants, tryNumber);
+    public void createCarRaicingGame(String participants) {
+        game = new Game(participants);
     }
 
     public List<Car> moveForwardAllCars() {

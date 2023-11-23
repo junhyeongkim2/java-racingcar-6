@@ -21,7 +21,7 @@ public class GameTest {
         //given
         String participants = "pobi,jun,king";
         Cars cars = new Cars(participants);
-        Game game = new Game(participants, 5);
+        Game game = new Game(participants);
         //when
         List<Car> carPositions = cars.getCars().stream().peek(car -> car.moveForward(5)).collect(Collectors.toList());
 
@@ -33,7 +33,7 @@ public class GameTest {
     @Test
     void judgeWinners_EqualWinners_Success() {
         //given
-        Game game = new Game("pobi,jun,king", 5);
+        Game game = new Game("pobi,jun,king");
         Cars cars = new Cars("pobi,jun,king");
 
         //when

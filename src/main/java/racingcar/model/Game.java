@@ -6,7 +6,7 @@ public class Game {
     private Cars cars;
     private int tryNumber;
 
-    public Game(String participants, int tryNumber) {
+    public Game(String participants) {
         this.cars = new Cars(participants);
         this.tryNumber = tryNumber;
     }
