@@ -7,6 +7,8 @@ import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 
 public class Participants {
 
+    private static final String INVALID_INPUT_ERROR_MESSAGE = "[ERROR] 잘못된 값이 입력되었습니다.";
+
     private final List<String> participants;
 
     public Participants(String input) {
@@ -16,7 +18,7 @@ public class Participants {
     public static List<String> validateIsFiveUnderName(List<String> names) {
         for (String name : names) {
             if (name.length() > 5) {
-                throw new IllegalArgumentException("[ERROR] 잘못된 값이 입력되었습니다.");
+                throw new IllegalArgumentException(INVALID_INPUT_ERROR_MESSAGE);
             }
         }
         return names;
