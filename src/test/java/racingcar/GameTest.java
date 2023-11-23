@@ -1,6 +1,7 @@
 package racingcar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.Car;
@@ -22,7 +23,8 @@ public class GameTest {
         Cars cars = new Cars(participants);
         Game game = new Game(cars, 5);
         //when
-        List<Car> carPositions = game.moveForwardAllCars();
+        List<Car> carPositions = cars.getCars().stream().peek(car -> car.moveForward(5)).collect(Collectors.toList());
+
         //then
         carPositions.stream().forEach(carPosition -> assertThat(carPosition.getPosition()).isEqualTo(1));
     }
@@ -35,14 +37,13 @@ public class GameTest {
         Cars cars = new Cars(participants);
         Game game = new Game(cars, 5);
         //when
-        game.moveForwardAllCars();
+        cars.getCars().stream().map(car -> car.moveForward(5));
         Winners winners = game.judgeWinners();
         //then
         assertThat(winners.getWinners().size()).isEqualTo(3);
         assertThat(winners.getWinners().get(0)).isEqualTo("pobi");
         assertThat(winners.getWinners().get(1)).isEqualTo("jun");
         assertThat(winners.getWinners().get(2)).isEqualTo("king");
-
     }
 
 

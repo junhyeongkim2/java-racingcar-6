@@ -17,7 +17,8 @@ public class Cars {
     }
 
     public List<Car> moveForwardAll() {
-        return cars.stream().peek(car -> car.moveForward(5)).collect(Collectors.toList());
+        return cars.stream().peek(car -> car.moveForward(Generator.generateRandomNumber()))
+                .collect(Collectors.toList());
     }
 
 

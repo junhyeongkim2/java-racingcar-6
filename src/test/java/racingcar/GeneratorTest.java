@@ -18,6 +18,6 @@ public class GeneratorTest {
         randomNumber = Generator.generateRandomNumber();
         //then
         assertThat(randomNumber).isNotEqualTo(0);
-        assertThat(randomNumber).isIn(1, 9);
+        assertThat(randomNumber).isLessThan(9).isGreaterThan(1);
     }
 }
