@@ -7,15 +7,15 @@ import java.util.stream.Collectors;
 public class Winners {
     private final List<String> winners;
 
-    public Winners(List<Car> cars) {
+    public Winners(Cars cars) {
         this.winners = judgeWinners(cars);
     }
 
-    public List<String> judgeWinners(List<Car> cars) {
-        return cars.stream()
+    public List<String> judgeWinners(Cars cars) {
+        return cars.getCars().stream()
                 .map(car -> car.getPosition())
                 .max(Integer::compare)
-                .map(maxPosition -> cars.stream()
+                .map(maxPosition -> cars.getCars().stream()
                         .filter(car -> car.getPosition() == maxPosition)
                         .map(Car::getName)
                         .collect(Collectors.toList()))

@@ -35,8 +35,8 @@ public class GameTest {
         Cars cars = new Cars(participants);
         Game game = new Game(cars, 5);
         //when
-        List<Car> carPositions = game.moveForwardAllCars();
-        Winners winners = game.judgeWinners(carPositions);
+        game.moveForwardAllCars();
+        Winners winners = game.judgeWinners();
         //then
         assertThat(winners.getWinners().size()).isEqualTo(3);
         assertThat(winners.getWinners().get(0)).isEqualTo("pobi");
