@@ -8,8 +8,8 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(Participants participants) {
-        this.cars = participants.generateParticipantsToCars();
+    public Cars(String participants) {
+        this.cars = generateCars(participants);
     }
 
     public List<Car> getCars() {
@@ -19,6 +19,11 @@ public class Cars {
     public List<Car> moveForwardAll() {
         return cars.stream().peek(car -> car.moveForward(Generator.generateRandomNumber()))
                 .collect(Collectors.toList());
+    }
+
+    public List<Car> generateCars(String names) {
+        Participants participants = new Participants(names);
+        return participants.generateParticipantsToCars();
     }
 
 

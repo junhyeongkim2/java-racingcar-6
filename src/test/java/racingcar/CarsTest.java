@@ -15,7 +15,7 @@ public class CarsTest {
     @Test
     void Cars_EqualName_Success() {
         //given
-        Participants participants = new Participants("pobi,jun,king");
+        String participants = "pobi,jun,king";
         //when
         Cars cars = new Cars(participants);
         //then

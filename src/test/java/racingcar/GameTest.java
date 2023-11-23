@@ -19,9 +19,9 @@ public class GameTest {
     @Test
     void moveForwardAllCars_EqualDistance_Success() {
         //given
-        Participants participants = new Participants("pobi,jun,king");
+        String participants = "pobi,jun,king";
         Cars cars = new Cars(participants);
-        Game game = new Game(cars, 5);
+        Game game = new Game(participants, 5);
         //when
         List<Car> carPositions = cars.getCars().stream().peek(car -> car.moveForward(5)).collect(Collectors.toList());
 
@@ -33,9 +33,9 @@ public class GameTest {
     @Test
     void judgeWinners_EqualWinners_Success() {
         //given
-        Participants participants = new Participants("pobi,jun,king");
-        Cars cars = new Cars(participants);
-        Game game = new Game(cars, 5);
+        Game game = new Game("pobi,jun,king", 5);
+        Cars cars = new Cars("pobi,jun,king");
+
         //when
         cars.getCars().stream().map(car -> car.moveForward(5));
         Winners winners = game.judgeWinners();
