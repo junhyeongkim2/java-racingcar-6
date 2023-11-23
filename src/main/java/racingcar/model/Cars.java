@@ -8,12 +8,16 @@ public class Cars {
 
     private final List<Car> cars;
 
-    public Cars(List<String> participants) {
-        this.cars = participants.stream().map(participant -> new Car(participant)).collect(Collectors.toList());
+    public Cars(Participants participants) {
+        this.cars = participants.generateParticipantsToCars();
     }
 
     public List<Car> getCars() {
         return Collections.unmodifiableList(cars);
+    }
+
+    public List<Car> moveForwardAll() {
+        return cars.stream().peek(car -> car.moveForward(5)).collect(Collectors.toList());
     }
 
 
