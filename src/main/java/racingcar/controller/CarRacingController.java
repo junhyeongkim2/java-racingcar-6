@@ -13,14 +13,22 @@ public class CarRacingController {
     private CarRacingService carRacingService;
     int tryNumber;
 
+    public CarRacingController(CarRacingService carRacingService) {
+        this.carRacingService = carRacingService;
+    }
+
     public void start() {
-        carRacingService = new CarRacingService(new Participants(InputView.readParticipants()),
+        carRacingService.createCarRaicingGame(new Participants(InputView.readParticipants()),
                 tryNumber = Integer.parseInt(InputView.readTryNumber()));
         OutputView.printStartResultMessage();
+        printCarPositions();
+        OutputView.printWinners(carRacingService.judgeWinners());
+    }
+
+    private void printCarPositions() {
         for (int i = 0; i < tryNumber; i++) {
             OutputView.printResult(carRacingService.moveForwardAllCars());
         }
-        OutputView.printWinners(carRacingService.judgeWinners());
     }
 
 

@@ -12,10 +12,9 @@ public class CarRacingService {
 
     private Game game;
 
-    public CarRacingService(Participants participants, int tryNumber) {
+    public void createCarRaicingGame(Participants participants, int tryNumber) {
         game = new Game(new Cars(participants), tryNumber);
     }
-
 
     public List<Car> moveForwardAllCars() {
         return game.moveForwardAllCars();
