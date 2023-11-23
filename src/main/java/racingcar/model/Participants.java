@@ -3,13 +3,23 @@ package racingcar.model;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import net.bytebuddy.pool.TypePool.Resolution.Illegal;
 
 public class Participants {
 
     private final List<String> participants;
 
     public Participants(String input) {
-        this.participants = List.of(input.split(","));
+        this.participants = validateIsFiveUnderName(List.of(input.split(",")));
+    }
+
+    public static List<String> validateIsFiveUnderName(List<String> names) {
+        for (String name : names) {
+            if (name.length() > 5) {
+                throw new IllegalArgumentException("[ERROR] 잘못된 값이 입력되었습니다.");
+            }
+        }
+        return names;
     }
 
     public List<Car> generateParticipantsToCars() {
