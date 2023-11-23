@@ -1,23 +1,26 @@
 package racingcar.controller;
 
+import racingcar.model.Car;
 import racingcar.model.Cars;
 import racingcar.model.Game;
 import racingcar.model.Participants;
+import racingcar.service.CarRacingService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class CarRacingController {
 
+    private CarRacingService carRacingService;
+    int tryNumber;
+
     public void start() {
-        Participants participants = new Participants(InputView.readParticipants());
-        int tryNumber = Integer.parseInt(InputView.readTryNumber());
-        Game game = new Game(new Cars(participants), tryNumber);
+        carRacingService = new CarRacingService(new Participants(InputView.readParticipants()),
+                tryNumber = Integer.parseInt(InputView.readTryNumber()));
         OutputView.printStartResultMessage();
         for (int i = 0; i < tryNumber; i++) {
-            OutputView.printResult(game.moveForwardAllCars());
+            OutputView.printResult(carRacingService.moveForwardAllCars());
         }
-
-        OutputView.printWinners(game.judgeWinners());
+        OutputView.printWinners(carRacingService.judgeWinners());
     }
 
 
